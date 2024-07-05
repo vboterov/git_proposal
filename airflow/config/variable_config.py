@@ -3,7 +3,7 @@
         "env_name": "dev",
         "databricks_conn_id": "con-dbw-deid",
         "example_case": {
-            "python_file": "dbfs:/repositories/example_case/proposal_example.py",
+            "python_file": "dbfs:/code/example_case/example_case/proposal_example.py",
             "libraries": [],
             "cluster": {
                 "num_workers": 0,
