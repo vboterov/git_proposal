@@ -3,6 +3,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# Node artifact files
+dist/
+
 # C extensions
 *.so
 
