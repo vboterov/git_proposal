@@ -1,0 +1,41 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: no-commit-to-branch
+  - repo: https://github.com/asottile/reorder_python_imports
+    rev: v2.6.0
+    hooks:
+      - id: reorder-python-imports
+        language_version: python3
+  - repo: https://github.com/ambv/black
+    rev: 22.3.0
+    hooks:
+    - id: black
+      additional_dependencies: ["click<=8.1.0"] # This is due to https://github.com/pallets/click/issues/2225
+  - repo: https://github.com/asottile/blacken-docs
+    rev: v1.12.1
+    hooks:
+    - id: blacken-docs
+      additional_dependencies: [
+        "black==21.12b0", # This is due to https://github.com/psf/black/issues/2829
+        "click<=8.1.0" # This is due to https://github.com/pallets/click/issues/2225
+      ]
+  - repo: https://github.com/Yelp/detect-secrets
+    rev: v1.1.0
+    hooks:
+    - id: detect-secrets
+      name: Detect secrets
+      language: python
+      entry: detect-secrets-hook
+      args: ['--baseline', '.secrets.baseline']
+  - repo: local
+    hooks:
+    - id: check-branch-name
+      name: Checks the branch name against a regex
+      entry: python
+      args: [".bitbucket/scripts/branch_name.py"]
+      language: python
+      pass_filenames: false
